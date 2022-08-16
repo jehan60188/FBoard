@@ -14,10 +14,10 @@ class FBoard:
         xi, xj = self.__occupied_x
         self.__board[xi][xj] = PIPS.X
 
-    def get_game_state(self):
+    def get_game_state(self) -> str:
         return self.__state.name
 
-    def move_x(self, tgt_i, tgt_j):
+    def move_x(self, tgt_i: int, tgt_j: int) -> bool:
         fromi, fromj = self.__occupied_x
         if not self.__is_allowed(fromi, fromj, tgt_i, tgt_j):
             return False
@@ -29,7 +29,7 @@ class FBoard:
             self.__state = STATES.X_WON
         return True
 
-    def move_o(self, curri, currj, tgt_i, tgt_j):
+    def move_o(self, curri: int, currj: int, tgt_i: int, tgt_j: int) -> bool:
         if not self.__is_allowed(curri, currj, tgt_i, tgt_j):
             return False
         if self.__board[curri][currj] != PIPS.O:
